@@ -21,14 +21,15 @@ Route::get('/', function () {
 
 Route::prefix('/blog')->name('blog.')->group(function () {
 
-//    $post = new Post();
-//    $post->title = 'Mon premier article';
-//    $post->slug = 'mon-premier-article';
-//    $post->content = 'Mon contenu de premier article';
-//    $post->save();
-//    return $post;
-
     Route::get('/', function () {
+//        $post = new Post();
+//        $post->title = 'Mon troisieme article';
+//        $post->slug = 'mon-troisieme-article';
+//        $post->content = 'Mon contenu de troisieme article';
+//        $post->save();
+        return App\Models\Post::all();
+//        dd(App\Models\Post::all());
+
         return [
             'link' =>\route('blog.show', ['slug' => 'article', 'id' => 13]),
         ];

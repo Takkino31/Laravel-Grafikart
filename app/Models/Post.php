@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-
-    /**
-     * @var mixed|string
-     */
-    public mixed $title;
 }
