@@ -16,7 +16,7 @@ class BlogController extends Controller
 {
     public function index(BlogFilterRequest $request): View
     {
-        dd($request->validated());
+//        dd($request->validated());
 
 //        $validator = Validator::make([
 //            'title' => '' ,
@@ -30,12 +30,18 @@ class BlogController extends Controller
         ]);
     }
 
-    public function show (string $slug , string $id): RedirectResponse | View
+/*    public function show (string $slug , Post $post): RedirectResponse | View
     {
-        $post = Post::findOrFail($id);
+//        dd($post);
+//        $post = Post::findOrFail($post);
         if ($post->slug !== $slug) {
             return to_route('blog.show', [$slug => $post->slug,'id' => $post->id]);
         }
+        return  view('blog.show', ['post' => $post]);
+    }*/
+
+    public function show ( Post $post): RedirectResponse | View
+    {
         return  view('blog.show', ['post' => $post]);
     }
 }
