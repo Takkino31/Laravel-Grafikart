@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogFilterRequest;
 use App\Models\Post;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 
 class BlogController extends Controller
 {
-    public function index(): View
+    public function index(BlogFilterRequest $request): View
     {
-        $posts = Post::paginate(1);
-        return view('blog.index', compact('posts'));
+        dd($request->validated());
+
+//        $validator = Validator::make([
+//            'title' => '' ,
+//            'content' => 'article validated'
+//        ],[
+//            'title' =>'required | numeric',
+//        ]);
+
+        return view('blog.index', [
+            'posts' => Post::paginate(1)
+        ]);
     }
 
     public function show (string $slug , string $id): RedirectResponse | View
